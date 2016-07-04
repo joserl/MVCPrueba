@@ -1,0 +1,43 @@
+﻿@model LolArgentina.Models.USUARIO
+
+@{
+    ViewBag.Title = "nuevoUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>nuevoUsuario</h2>
+
+<div>
+    <h4>USUARIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreDeUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreDeUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contrasena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contrasena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUsuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

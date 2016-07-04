@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0f10530d3234ec498e4cdaf2cd25687" Name="Diagram1">
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.ADMIN_X_EQUIPO" Width="1.5" PointX="15" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.CAMPEONES" Width="1.5" PointX="9.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.CAMPEONES_MAS_JUGADOS_X_USUARIO" Width="1.5" PointX="12" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.CIUDAD" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.DIA" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.DISPONIBILIDAD_X_JUGADOR" Width="1.5" PointX="12" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.DIVISION" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.DOMICILIO" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.EQUIPO" Width="1.5" PointX="12.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.JUGADOR" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.JUGADORES_X_EQUIPO" Width="1.5" PointX="12" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.PAIS" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.POSTULACION_EQUIPO_X_JUGADOR" Width="1.5" PointX="15" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.PROVINCIA" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.ROLES_JUGADOR" Width="1.5" PointX="12.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.ROLES_JUGADOR_X_JUGADOR" Width="1.5" PointX="15" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.ROLES_USUARIOS" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.TELEFONO_X_JUGADOR" Width="1.5" PointX="15" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.TIPO_TELEFONO" Width="1.5" PointX="12.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOLARGENTINA18Model.USUARIO" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_ADMINXEQUIPO_EQUIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_ADMINXEQUIPO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_CAMPEONES" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_JUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_CIUDAD_PROVINCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_DOMICILIO_CIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_DISPONIBILIDAD_X_JUGADOR_DIA" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_DISPONIBILIDAD_X_JUGADOR_JUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_JUGADOR_DIVISION" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_JUGADOR_DOMICILIO" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_JUGADORESXEQUIPO_EQUIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_POSTULACION_EQUIPO_X_JUGADOR_EQUIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_JUGADOR_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_JUGADORES_X_EQUIPO_JUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_POSTULACION_EQUIPO_X_JUGADOR_JUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_ROLESJUGADORXJUGADOR_JUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_TELEFONO_X_JUGADOR_JUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_PROVINCIA_PAIS" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_ROLESJUGADORXJUGADOR_ROLESJUGADOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_USUARIO_ROLES_USUARIOS" ManuallyRouted="false" />
+        <AssociationConnector Association="LOLARGENTINA18Model.FK_TELEFONO_X_JUGADOR_TIPO_TELEFONO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

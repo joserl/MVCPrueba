@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LOLARGENTINA18ModelStoreContainer" CdmEntityContainer="LOLARGENTINA18Entities">
+    <EntitySetMapping Name="ADMIN_X_EQUIPO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.ADMIN_X_EQUIPO">
+        <MappingFragment StoreEntitySet="ADMIN_X_EQUIPO">
+          <ScalarProperty Name="idAdminXEquipo" ColumnName="idAdminXEquipo" />
+          <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMPEONES">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.CAMPEONES">
+        <MappingFragment StoreEntitySet="CAMPEONES">
+          <ScalarProperty Name="idCampeones" ColumnName="idCampeones" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAMPEONES_MAS_JUGADOS_X_USUARIO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.CAMPEONES_MAS_JUGADOS_X_USUARIO">
+        <MappingFragment StoreEntitySet="CAMPEONES_MAS_JUGADOS_X_USUARIO">
+          <ScalarProperty Name="idCampeonesMasJugadosXUSuario" ColumnName="idCampeonesMasJugadosXUSuario" />
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="idCampeon" ColumnName="idCampeon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIUDAD">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.CIUDAD">
+        <MappingFragment StoreEntitySet="CIUDAD">
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+          <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIA">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.DIA">
+        <MappingFragment StoreEntitySet="DIA">
+          <ScalarProperty Name="idDia" ColumnName="idDia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISPONIBILIDAD_X_JUGADOR">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.DISPONIBILIDAD_X_JUGADOR">
+        <MappingFragment StoreEntitySet="DISPONIBILIDAD_X_JUGADOR">
+          <ScalarProperty Name="idDisponibilidadXJugador" ColumnName="idDisponibilidadXJugador" />
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="horaDesde" ColumnName="horaDesde" />
+          <ScalarProperty Name="horaHasta" ColumnName="horaHasta" />
+          <ScalarProperty Name="idDia" ColumnName="idDia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIVISION">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.DIVISION">
+        <MappingFragment StoreEntitySet="DIVISION">
+          <ScalarProperty Name="idDivision" ColumnName="idDivision" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOMICILIO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.DOMICILIO">
+        <MappingFragment StoreEntitySet="DOMICILIO">
+          <ScalarProperty Name="idDomicilio" ColumnName="idDomicilio" />
+          <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+          <ScalarProperty Name="calle" ColumnName="calle" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="dpto" ColumnName="dpto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIPO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.EQUIPO">
+        <MappingFragment StoreEntitySet="EQUIPO">
+          <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+          <ScalarProperty Name="nombreEquipo" ColumnName="nombreEquipo" />
+          <ScalarProperty Name="etiqueta" ColumnName="etiqueta" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+          <ScalarProperty Name="paginaWeb" ColumnName="paginaWeb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JUGADOR">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.JUGADOR">
+        <MappingFragment StoreEntitySet="JUGADOR">
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
+          <ScalarProperty Name="idDivision" ColumnName="idDivision" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="nombreInvocador" ColumnName="nombreInvocador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JUGADORES_X_EQUIPO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.JUGADORES_X_EQUIPO">
+        <MappingFragment StoreEntitySet="JUGADORES_X_EQUIPO">
+          <ScalarProperty Name="IdJugadoresXEquipo" ColumnName="IdJugadoresXEquipo" />
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAIS">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.PAIS">
+        <MappingFragment StoreEntitySet="PAIS">
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSTULACION_EQUIPO_X_JUGADOR">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.POSTULACION_EQUIPO_X_JUGADOR">
+        <MappingFragment StoreEntitySet="POSTULACION_EQUIPO_X_JUGADOR">
+          <ScalarProperty Name="idPostulacion" ColumnName="idPostulacion" />
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="idEquipo" ColumnName="idEquipo" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="fechaPostulacion" ColumnName="fechaPostulacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVINCIA">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.PROVINCIA">
+        <MappingFragment StoreEntitySet="PROVINCIA">
+          <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+          <ScalarProperty Name="idPais" ColumnName="idPais" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES_JUGADOR">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.ROLES_JUGADOR">
+        <MappingFragment StoreEntitySet="ROLES_JUGADOR">
+          <ScalarProperty Name="idRolJugador" ColumnName="idRolJugador" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES_JUGADOR_X_JUGADOR">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.ROLES_JUGADOR_X_JUGADOR">
+        <MappingFragment StoreEntitySet="ROLES_JUGADOR_X_JUGADOR">
+          <ScalarProperty Name="idRolesJugadorXJugador" ColumnName="idRolesJugadorXJugador" />
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="idRolesJugador" ColumnName="idRolesJugador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES_USUARIOS">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.ROLES_USUARIOS">
+        <MappingFragment StoreEntitySet="ROLES_USUARIOS">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TELEFONO_X_JUGADOR">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.TELEFONO_X_JUGADOR">
+        <MappingFragment StoreEntitySet="TELEFONO_X_JUGADOR">
+          <ScalarProperty Name="idTelefonoXJugador" ColumnName="idTelefonoXJugador" />
+          <ScalarProperty Name="idTipoTelefono" ColumnName="idTipoTelefono" />
+          <ScalarProperty Name="idJugador" ColumnName="idJugador" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_TELEFONO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.TIPO_TELEFONO">
+        <MappingFragment StoreEntitySet="TIPO_TELEFONO">
+          <ScalarProperty Name="idTipoTelefono" ColumnName="idTipoTelefono" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="LOLARGENTINA18Model.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombreDeUsuario" ColumnName="nombreDeUsuario" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

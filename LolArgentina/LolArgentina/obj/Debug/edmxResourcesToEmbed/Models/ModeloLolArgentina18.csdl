@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LOLARGENTINA18Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMIN_X_EQUIPO">
+    <Key>
+      <PropertyRef Name="idAdminXEquipo" />
+    </Key>
+    <Property Name="idAdminXEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idEquipo" Type="Int32" Nullable="false" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EQUIPO" Relationship="Self.FK_ADMINXEQUIPO_EQUIPO" FromRole="ADMIN_X_EQUIPO" ToRole="EQUIPO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_ADMINXEQUIPO_USUARIO" FromRole="ADMIN_X_EQUIPO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="CAMPEONES">
+    <Key>
+      <PropertyRef Name="idCampeones" />
+    </Key>
+    <Property Name="idCampeones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="CAMPEONES_MAS_JUGADOS_X_USUARIO" Relationship="Self.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_CAMPEONES" FromRole="CAMPEONES" ToRole="CAMPEONES_MAS_JUGADOS_X_USUARIO" />
+  </EntityType>
+  <EntityType Name="CAMPEONES_MAS_JUGADOS_X_USUARIO">
+    <Key>
+      <PropertyRef Name="idCampeonesMasJugadosXUSuario" />
+    </Key>
+    <Property Name="idCampeonesMasJugadosXUSuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idJugador" Type="Int32" Nullable="false" />
+    <Property Name="idCampeon" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CAMPEONES" Relationship="Self.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_CAMPEONES" FromRole="CAMPEONES_MAS_JUGADOS_X_USUARIO" ToRole="CAMPEONES" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_JUGADOR" FromRole="CAMPEONES_MAS_JUGADOS_X_USUARIO" ToRole="JUGADOR" />
+  </EntityType>
+  <EntityType Name="CIUDAD">
+    <Key>
+      <PropertyRef Name="idCiudad" />
+    </Key>
+    <Property Name="idCiudad" Type="Int32" Nullable="false" />
+    <Property Name="idProvincia" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PROVINCIA" Relationship="Self.FK_CIUDAD_PROVINCIA" FromRole="CIUDAD" ToRole="PROVINCIA" />
+    <NavigationProperty Name="DOMICILIO" Relationship="Self.FK_DOMICILIO_CIUDAD" FromRole="CIUDAD" ToRole="DOMICILIO" />
+  </EntityType>
+  <EntityType Name="DIA">
+    <Key>
+      <PropertyRef Name="idDia" />
+    </Key>
+    <Property Name="idDia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DISPONIBILIDAD_X_JUGADOR" Relationship="Self.FK_DISPONIBILIDAD_X_JUGADOR_DIA" FromRole="DIA" ToRole="DISPONIBILIDAD_X_JUGADOR" />
+  </EntityType>
+  <EntityType Name="DISPONIBILIDAD_X_JUGADOR">
+    <Key>
+      <PropertyRef Name="idDisponibilidadXJugador" />
+    </Key>
+    <Property Name="idDisponibilidadXJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idJugador" Type="Int32" Nullable="false" />
+    <Property Name="horaDesde" Type="Time" Precision="7" />
+    <Property Name="horaHasta" Type="Time" Precision="7" />
+    <Property Name="idDia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DIA" Relationship="Self.FK_DISPONIBILIDAD_X_JUGADOR_DIA" FromRole="DISPONIBILIDAD_X_JUGADOR" ToRole="DIA" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_DISPONIBILIDAD_X_JUGADOR_JUGADOR" FromRole="DISPONIBILIDAD_X_JUGADOR" ToRole="JUGADOR" />
+  </EntityType>
+  <EntityType Name="DIVISION">
+    <Key>
+      <PropertyRef Name="idDivision" />
+    </Key>
+    <Property Name="idDivision" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_JUGADOR_DIVISION" FromRole="DIVISION" ToRole="JUGADOR" />
+  </EntityType>
+  <EntityType Name="DOMICILIO">
+    <Key>
+      <PropertyRef Name="idDomicilio" />
+    </Key>
+    <Property Name="idDomicilio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCiudad" Type="Int32" Nullable="false" />
+    <Property Name="calle" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="dpto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="CIUDAD" Relationship="Self.FK_DOMICILIO_CIUDAD" FromRole="DOMICILIO" ToRole="CIUDAD" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_JUGADOR_DOMICILIO" FromRole="DOMICILIO" ToRole="JUGADOR" />
+  </EntityType>
+  <EntityType Name="EQUIPO">
+    <Key>
+      <PropertyRef Name="idEquipo" />
+    </Key>
+    <Property Name="idEquipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEquipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="etiqueta" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="fechaAlta" Type="DateTime" Precision="0" />
+    <Property Name="paginaWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ADMIN_X_EQUIPO" Relationship="Self.FK_ADMINXEQUIPO_EQUIPO" FromRole="EQUIPO" ToRole="ADMIN_X_EQUIPO" />
+    <NavigationProperty Name="JUGADORES_X_EQUIPO" Relationship="Self.FK_JUGADORESXEQUIPO_EQUIPO" FromRole="EQUIPO" ToRole="JUGADORES_X_EQUIPO" />
+    <NavigationProperty Name="POSTULACION_EQUIPO_X_JUGADOR" Relationship="Self.FK_POSTULACION_EQUIPO_X_JUGADOR_EQUIPO" FromRole="EQUIPO" ToRole="POSTULACION_EQUIPO_X_JUGADOR" />
+  </EntityType>
+  <EntityType Name="JUGADOR">
+    <Key>
+      <PropertyRef Name="idJugador" />
+    </Key>
+    <Property Name="idJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDomicilio" Type="Int32" Nullable="false" />
+    <Property Name="idDivision" Type="Int32" Nullable="false" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="Int32" Nullable="false" />
+    <Property Name="nombreInvocador" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CAMPEONES_MAS_JUGADOS_X_USUARIO" Relationship="Self.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_JUGADOR" FromRole="JUGADOR" ToRole="CAMPEONES_MAS_JUGADOS_X_USUARIO" />
+    <NavigationProperty Name="DISPONIBILIDAD_X_JUGADOR" Relationship="Self.FK_DISPONIBILIDAD_X_JUGADOR_JUGADOR" FromRole="JUGADOR" ToRole="DISPONIBILIDAD_X_JUGADOR" />
+    <NavigationProperty Name="DIVISION" Relationship="Self.FK_JUGADOR_DIVISION" FromRole="JUGADOR" ToRole="DIVISION" />
+    <NavigationProperty Name="DOMICILIO" Relationship="Self.FK_JUGADOR_DOMICILIO" FromRole="JUGADOR" ToRole="DOMICILIO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_JUGADOR_USUARIO" FromRole="JUGADOR" ToRole="USUARIO" />
+    <NavigationProperty Name="JUGADORES_X_EQUIPO" Relationship="Self.FK_JUGADORES_X_EQUIPO_JUGADOR" FromRole="JUGADOR" ToRole="JUGADORES_X_EQUIPO" />
+    <NavigationProperty Name="POSTULACION_EQUIPO_X_JUGADOR" Relationship="Self.FK_POSTULACION_EQUIPO_X_JUGADOR_JUGADOR" FromRole="JUGADOR" ToRole="POSTULACION_EQUIPO_X_JUGADOR" />
+    <NavigationProperty Name="ROLES_JUGADOR_X_JUGADOR" Relationship="Self.FK_ROLESJUGADORXJUGADOR_JUGADOR" FromRole="JUGADOR" ToRole="ROLES_JUGADOR_X_JUGADOR" />
+    <NavigationProperty Name="TELEFONO_X_JUGADOR" Relationship="Self.FK_TELEFONO_X_JUGADOR_JUGADOR" FromRole="JUGADOR" ToRole="TELEFONO_X_JUGADOR" />
+  </EntityType>
+  <EntityType Name="JUGADORES_X_EQUIPO">
+    <Key>
+      <PropertyRef Name="IdJugadoresXEquipo" />
+    </Key>
+    <Property Name="IdJugadoresXEquipo" Type="Int32" Nullable="false" />
+    <Property Name="idJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idEquipo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EQUIPO" Relationship="Self.FK_JUGADORESXEQUIPO_EQUIPO" FromRole="JUGADORES_X_EQUIPO" ToRole="EQUIPO" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_JUGADORES_X_EQUIPO_JUGADOR" FromRole="JUGADORES_X_EQUIPO" ToRole="JUGADOR" />
+  </EntityType>
+  <EntityType Name="PAIS">
+    <Key>
+      <PropertyRef Name="idPais" />
+    </Key>
+    <Property Name="idPais" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PROVINCIA" Relationship="Self.FK_PROVINCIA_PAIS" FromRole="PAIS" ToRole="PROVINCIA" />
+  </EntityType>
+  <EntityType Name="POSTULACION_EQUIPO_X_JUGADOR">
+    <Key>
+      <PropertyRef Name="idPostulacion" />
+    </Key>
+    <Property Name="idPostulacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idJugador" Type="Int32" Nullable="false" />
+    <Property Name="idEquipo" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fechaPostulacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="EQUIPO" Relationship="Self.FK_POSTULACION_EQUIPO_X_JUGADOR_EQUIPO" FromRole="POSTULACION_EQUIPO_X_JUGADOR" ToRole="EQUIPO" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_POSTULACION_EQUIPO_X_JUGADOR_JUGADOR" FromRole="POSTULACION_EQUIPO_X_JUGADOR" ToRole="JUGADOR" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="idProvincia" />
+    </Key>
+    <Property Name="idProvincia" Type="Int32" Nullable="false" />
+    <Property Name="idPais" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CIUDAD" Relationship="Self.FK_CIUDAD_PROVINCIA" FromRole="PROVINCIA" ToRole="CIUDAD" />
+    <NavigationProperty Name="PAIS" Relationship="Self.FK_PROVINCIA_PAIS" FromRole="PROVINCIA" ToRole="PAIS" />
+  </EntityType>
+  <EntityType Name="ROLES_JUGADOR">
+    <Key>
+      <PropertyRef Name="idRolJugador" />
+    </Key>
+    <Property Name="idRolJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ROLES_JUGADOR_X_JUGADOR" Relationship="Self.FK_ROLESJUGADORXJUGADOR_ROLESJUGADOR" FromRole="ROLES_JUGADOR" ToRole="ROLES_JUGADOR_X_JUGADOR" />
+  </EntityType>
+  <EntityType Name="ROLES_JUGADOR_X_JUGADOR">
+    <Key>
+      <PropertyRef Name="idRolesJugadorXJugador" />
+    </Key>
+    <Property Name="idRolesJugadorXJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idJugador" Type="Int32" Nullable="false" />
+    <Property Name="idRolesJugador" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_ROLESJUGADORXJUGADOR_JUGADOR" FromRole="ROLES_JUGADOR_X_JUGADOR" ToRole="JUGADOR" />
+    <NavigationProperty Name="ROLES_JUGADOR" Relationship="Self.FK_ROLESJUGADORXJUGADOR_ROLESJUGADOR" FromRole="ROLES_JUGADOR_X_JUGADOR" ToRole="ROLES_JUGADOR" />
+  </EntityType>
+  <EntityType Name="ROLES_USUARIOS">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_Usuarios_RolesUsuarios" FromRole="ROLES_USUARIOS" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="TELEFONO_X_JUGADOR">
+    <Key>
+      <PropertyRef Name="idTelefonoXJugador" />
+    </Key>
+    <Property Name="idTelefonoXJugador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTipoTelefono" Type="Int32" />
+    <Property Name="idJugador" Type="Int32" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_TELEFONO_X_JUGADOR_JUGADOR" FromRole="TELEFONO_X_JUGADOR" ToRole="JUGADOR" />
+    <NavigationProperty Name="TIPO_TELEFONO" Relationship="Self.FK_TELEFONO_X_JUGADOR_TIPO_TELEFONO" FromRole="TELEFONO_X_JUGADOR" ToRole="TIPO_TELEFONO" />
+  </EntityType>
+  <EntityType Name="TIPO_TELEFONO">
+    <Key>
+      <PropertyRef Name="idTipoTelefono" />
+    </Key>
+    <Property Name="idTipoTelefono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TELEFONO_X_JUGADOR" Relationship="Self.FK_TELEFONO_X_JUGADOR_TIPO_TELEFONO" FromRole="TIPO_TELEFONO" ToRole="TELEFONO_X_JUGADOR" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="nombreDeUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="ADMIN_X_EQUIPO" Relationship="Self.FK_ADMINXEQUIPO_USUARIO" FromRole="USUARIO" ToRole="ADMIN_X_EQUIPO" />
+    <NavigationProperty Name="JUGADOR" Relationship="Self.FK_JUGADOR_USUARIO" FromRole="USUARIO" ToRole="JUGADOR" />
+    <NavigationProperty Name="ROLES_USUARIOS" Relationship="Self.FK_Usuarios_RolesUsuarios" FromRole="USUARIO" ToRole="ROLES_USUARIOS" />
+  </EntityType>
+  <Association Name="FK_ADMINXEQUIPO_EQUIPO">
+    <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="1" />
+    <End Role="ADMIN_X_EQUIPO" Type="Self.ADMIN_X_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPO">
+        <PropertyRef Name="idEquipo" />
+      </Principal>
+      <Dependent Role="ADMIN_X_EQUIPO">
+        <PropertyRef Name="idEquipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ADMINXEQUIPO_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="ADMIN_X_EQUIPO" Type="Self.ADMIN_X_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="ADMIN_X_EQUIPO">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_CAMPEONES">
+    <End Role="CAMPEONES" Type="Self.CAMPEONES" Multiplicity="1" />
+    <End Role="CAMPEONES_MAS_JUGADOS_X_USUARIO" Type="Self.CAMPEONES_MAS_JUGADOS_X_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CAMPEONES">
+        <PropertyRef Name="idCampeones" />
+      </Principal>
+      <Dependent Role="CAMPEONES_MAS_JUGADOS_X_USUARIO">
+        <PropertyRef Name="idCampeon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_JUGADOR">
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1" />
+    <End Role="CAMPEONES_MAS_JUGADOS_X_USUARIO" Type="Self.CAMPEONES_MAS_JUGADOS_X_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Principal>
+      <Dependent Role="CAMPEONES_MAS_JUGADOS_X_USUARIO">
+        <PropertyRef Name="idJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CIUDAD_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="idProvincia" />
+      </Principal>
+      <Dependent Role="CIUDAD">
+        <PropertyRef Name="idProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOMICILIO_CIUDAD">
+    <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="1" />
+    <End Role="DOMICILIO" Type="Self.DOMICILIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDAD">
+        <PropertyRef Name="idCiudad" />
+      </Principal>
+      <Dependent Role="DOMICILIO">
+        <PropertyRef Name="idCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISPONIBILIDAD_X_JUGADOR_DIA">
+    <End Role="DIA" Type="Self.DIA" Multiplicity="1" />
+    <End Role="DISPONIBILIDAD_X_JUGADOR" Type="Self.DISPONIBILIDAD_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIA">
+        <PropertyRef Name="idDia" />
+      </Principal>
+      <Dependent Role="DISPONIBILIDAD_X_JUGADOR">
+        <PropertyRef Name="idDia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISPONIBILIDAD_X_JUGADOR_JUGADOR">
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1" />
+    <End Role="DISPONIBILIDAD_X_JUGADOR" Type="Self.DISPONIBILIDAD_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Principal>
+      <Dependent Role="DISPONIBILIDAD_X_JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JUGADOR_DIVISION">
+    <End Role="DIVISION" Type="Self.DIVISION" Multiplicity="1" />
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIVISION">
+        <PropertyRef Name="idDivision" />
+      </Principal>
+      <Dependent Role="JUGADOR">
+        <PropertyRef Name="idDivision" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JUGADOR_DOMICILIO">
+    <End Role="DOMICILIO" Type="Self.DOMICILIO" Multiplicity="1" />
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOMICILIO">
+        <PropertyRef Name="idDomicilio" />
+      </Principal>
+      <Dependent Role="JUGADOR">
+        <PropertyRef Name="IdDomicilio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JUGADORESXEQUIPO_EQUIPO">
+    <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="1" />
+    <End Role="JUGADORES_X_EQUIPO" Type="Self.JUGADORES_X_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPO">
+        <PropertyRef Name="idEquipo" />
+      </Principal>
+      <Dependent Role="JUGADORES_X_EQUIPO">
+        <PropertyRef Name="idEquipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSTULACION_EQUIPO_X_JUGADOR_EQUIPO">
+    <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="1" />
+    <End Role="POSTULACION_EQUIPO_X_JUGADOR" Type="Self.POSTULACION_EQUIPO_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPO">
+        <PropertyRef Name="idEquipo" />
+      </Principal>
+      <Dependent Role="POSTULACION_EQUIPO_X_JUGADOR">
+        <PropertyRef Name="idEquipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JUGADOR_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="JUGADOR">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JUGADORES_X_EQUIPO_JUGADOR">
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1" />
+    <End Role="JUGADORES_X_EQUIPO" Type="Self.JUGADORES_X_EQUIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Principal>
+      <Dependent Role="JUGADORES_X_EQUIPO">
+        <PropertyRef Name="idJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POSTULACION_EQUIPO_X_JUGADOR_JUGADOR">
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1" />
+    <End Role="POSTULACION_EQUIPO_X_JUGADOR" Type="Self.POSTULACION_EQUIPO_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Principal>
+      <Dependent Role="POSTULACION_EQUIPO_X_JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLESJUGADORXJUGADOR_JUGADOR">
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1" />
+    <End Role="ROLES_JUGADOR_X_JUGADOR" Type="Self.ROLES_JUGADOR_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Principal>
+      <Dependent Role="ROLES_JUGADOR_X_JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_X_JUGADOR_JUGADOR">
+    <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="0..1" />
+    <End Role="TELEFONO_X_JUGADOR" Type="Self.TELEFONO_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Principal>
+      <Dependent Role="TELEFONO_X_JUGADOR">
+        <PropertyRef Name="idJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROVINCIA_PAIS">
+    <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="idPais" />
+      </Principal>
+      <Dependent Role="PROVINCIA">
+        <PropertyRef Name="idPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLESJUGADORXJUGADOR_ROLESJUGADOR">
+    <End Role="ROLES_JUGADOR" Type="Self.ROLES_JUGADOR" Multiplicity="1" />
+    <End Role="ROLES_JUGADOR_X_JUGADOR" Type="Self.ROLES_JUGADOR_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES_JUGADOR">
+        <PropertyRef Name="idRolJugador" />
+      </Principal>
+      <Dependent Role="ROLES_JUGADOR_X_JUGADOR">
+        <PropertyRef Name="idRolesJugador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_RolesUsuarios">
+    <End Role="ROLES_USUARIOS" Type="Self.ROLES_USUARIOS" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES_USUARIOS">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_X_JUGADOR_TIPO_TELEFONO">
+    <End Role="TIPO_TELEFONO" Type="Self.TIPO_TELEFONO" Multiplicity="0..1" />
+    <End Role="TELEFONO_X_JUGADOR" Type="Self.TELEFONO_X_JUGADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_TELEFONO">
+        <PropertyRef Name="idTipoTelefono" />
+      </Principal>
+      <Dependent Role="TELEFONO_X_JUGADOR">
+        <PropertyRef Name="idTipoTelefono" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LOLARGENTINA18Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMIN_X_EQUIPO" EntityType="Self.ADMIN_X_EQUIPO" />
+    <EntitySet Name="CAMPEONES" EntityType="Self.CAMPEONES" />
+    <EntitySet Name="CAMPEONES_MAS_JUGADOS_X_USUARIO" EntityType="Self.CAMPEONES_MAS_JUGADOS_X_USUARIO" />
+    <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" />
+    <EntitySet Name="DIA" EntityType="Self.DIA" />
+    <EntitySet Name="DISPONIBILIDAD_X_JUGADOR" EntityType="Self.DISPONIBILIDAD_X_JUGADOR" />
+    <EntitySet Name="DIVISION" EntityType="Self.DIVISION" />
+    <EntitySet Name="DOMICILIO" EntityType="Self.DOMICILIO" />
+    <EntitySet Name="EQUIPO" EntityType="Self.EQUIPO" />
+    <EntitySet Name="JUGADOR" EntityType="Self.JUGADOR" />
+    <EntitySet Name="JUGADORES_X_EQUIPO" EntityType="Self.JUGADORES_X_EQUIPO" />
+    <EntitySet Name="PAIS" EntityType="Self.PAIS" />
+    <EntitySet Name="POSTULACION_EQUIPO_X_JUGADOR" EntityType="Self.POSTULACION_EQUIPO_X_JUGADOR" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" />
+    <EntitySet Name="ROLES_JUGADOR" EntityType="Self.ROLES_JUGADOR" />
+    <EntitySet Name="ROLES_JUGADOR_X_JUGADOR" EntityType="Self.ROLES_JUGADOR_X_JUGADOR" />
+    <EntitySet Name="ROLES_USUARIOS" EntityType="Self.ROLES_USUARIOS" />
+    <EntitySet Name="TELEFONO_X_JUGADOR" EntityType="Self.TELEFONO_X_JUGADOR" />
+    <EntitySet Name="TIPO_TELEFONO" EntityType="Self.TIPO_TELEFONO" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_ADMINXEQUIPO_EQUIPO" Association="Self.FK_ADMINXEQUIPO_EQUIPO">
+      <End Role="EQUIPO" EntitySet="EQUIPO" />
+      <End Role="ADMIN_X_EQUIPO" EntitySet="ADMIN_X_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ADMINXEQUIPO_USUARIO" Association="Self.FK_ADMINXEQUIPO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ADMIN_X_EQUIPO" EntitySet="ADMIN_X_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_CAMPEONES" Association="Self.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_CAMPEONES">
+      <End Role="CAMPEONES" EntitySet="CAMPEONES" />
+      <End Role="CAMPEONES_MAS_JUGADOS_X_USUARIO" EntitySet="CAMPEONES_MAS_JUGADOS_X_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_JUGADOR" Association="Self.FK_CAMPEONES_MAS_JUGADOS_X_USUARIO_JUGADOR">
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+      <End Role="CAMPEONES_MAS_JUGADOS_X_USUARIO" EntitySet="CAMPEONES_MAS_JUGADOS_X_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CIUDAD_PROVINCIA" Association="Self.FK_CIUDAD_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="CIUDAD" EntitySet="CIUDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOMICILIO_CIUDAD" Association="Self.FK_DOMICILIO_CIUDAD">
+      <End Role="CIUDAD" EntitySet="CIUDAD" />
+      <End Role="DOMICILIO" EntitySet="DOMICILIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISPONIBILIDAD_X_JUGADOR_DIA" Association="Self.FK_DISPONIBILIDAD_X_JUGADOR_DIA">
+      <End Role="DIA" EntitySet="DIA" />
+      <End Role="DISPONIBILIDAD_X_JUGADOR" EntitySet="DISPONIBILIDAD_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISPONIBILIDAD_X_JUGADOR_JUGADOR" Association="Self.FK_DISPONIBILIDAD_X_JUGADOR_JUGADOR">
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+      <End Role="DISPONIBILIDAD_X_JUGADOR" EntitySet="DISPONIBILIDAD_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JUGADOR_DIVISION" Association="Self.FK_JUGADOR_DIVISION">
+      <End Role="DIVISION" EntitySet="DIVISION" />
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JUGADOR_DOMICILIO" Association="Self.FK_JUGADOR_DOMICILIO">
+      <End Role="DOMICILIO" EntitySet="DOMICILIO" />
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JUGADORESXEQUIPO_EQUIPO" Association="Self.FK_JUGADORESXEQUIPO_EQUIPO">
+      <End Role="EQUIPO" EntitySet="EQUIPO" />
+      <End Role="JUGADORES_X_EQUIPO" EntitySet="JUGADORES_X_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSTULACION_EQUIPO_X_JUGADOR_EQUIPO" Association="Self.FK_POSTULACION_EQUIPO_X_JUGADOR_EQUIPO">
+      <End Role="EQUIPO" EntitySet="EQUIPO" />
+      <End Role="POSTULACION_EQUIPO_X_JUGADOR" EntitySet="POSTULACION_EQUIPO_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JUGADOR_USUARIO" Association="Self.FK_JUGADOR_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JUGADORES_X_EQUIPO_JUGADOR" Association="Self.FK_JUGADORES_X_EQUIPO_JUGADOR">
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+      <End Role="JUGADORES_X_EQUIPO" EntitySet="JUGADORES_X_EQUIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POSTULACION_EQUIPO_X_JUGADOR_JUGADOR" Association="Self.FK_POSTULACION_EQUIPO_X_JUGADOR_JUGADOR">
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+      <End Role="POSTULACION_EQUIPO_X_JUGADOR" EntitySet="POSTULACION_EQUIPO_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLESJUGADORXJUGADOR_JUGADOR" Association="Self.FK_ROLESJUGADORXJUGADOR_JUGADOR">
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+      <End Role="ROLES_JUGADOR_X_JUGADOR" EntitySet="ROLES_JUGADOR_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_X_JUGADOR_JUGADOR" Association="Self.FK_TELEFONO_X_JUGADOR_JUGADOR">
+      <End Role="JUGADOR" EntitySet="JUGADOR" />
+      <End Role="TELEFONO_X_JUGADOR" EntitySet="TELEFONO_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROVINCIA_PAIS" Association="Self.FK_PROVINCIA_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLESJUGADORXJUGADOR_ROLESJUGADOR" Association="Self.FK_ROLESJUGADORXJUGADOR_ROLESJUGADOR">
+      <End Role="ROLES_JUGADOR" EntitySet="ROLES_JUGADOR" />
+      <End Role="ROLES_JUGADOR_X_JUGADOR" EntitySet="ROLES_JUGADOR_X_JUGADOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_RolesUsuarios" Association="Self.FK_Usuarios_RolesUsuarios">
+      <End Role="ROLES_USUARIOS" EntitySet="ROLES_USUARIOS" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_X_JUGADOR_TIPO_TELEFONO" Association="Self.FK_TELEFONO_X_JUGADOR_TIPO_TELEFONO">
+      <End Role="TIPO_TELEFONO" EntitySet="TIPO_TELEFONO" />
+      <End Role="TELEFONO_X_JUGADOR" EntitySet="TELEFONO_X_JUGADOR" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

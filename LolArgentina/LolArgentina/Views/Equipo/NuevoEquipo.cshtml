@@ -1,0 +1,58 @@
+﻿@model LolArgentina.Models.EQUIPO
+
+@{
+    ViewBag.Title = "NuevoEquipo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nuevo Equipo Creado cone xito</h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.etiqueta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.etiqueta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paginaWeb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paginaWeb)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idEquipo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
